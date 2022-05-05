@@ -1,0 +1,19 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -S `pwd`/tmp_sys/ -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  #+quicklisp(ql:quickload '(:tmp_sys) :silent t)
+  )
+
+(defpackage :ros.script.tmp.3860740174
+  (:use :cl))
+(in-package :ros.script.tmp.3860740174)
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+  (tmp_sys:baz argv)
+  (print argv))
+;;; vim: set ft=lisp lisp:
